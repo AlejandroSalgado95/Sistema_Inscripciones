@@ -1,0 +1,248 @@
+body {
+    background-color:white;
+    margin: 0px;
+    text-align:center;
+}
+
+#headerDiv {
+    font: 50px arial;
+    background: #729ac1;
+    text-align: center;
+    color : white;
+    padding-top : 10px;
+    margin-top : 0px;
+    padding-bottom : 10px;
+    
+} 
+
+.menuDiv{
+   background:  #e3e6e8;
+   margin-bottom:20px;
+   
+}
+    
+.slogan {
+    
+    font: 20px arial;
+    text-align: center;
+    color : white;
+   
+}
+    
+.btn {
+    
+    border: none; /* Remove borders */
+    color: white; /* Add a text color */
+    padding: 14px 28px; /* Add some padding */
+    cursor: pointer; /* Add a pointer cursor on mouse-over */
+    background:#729ac1;
+    font: bold 20px arial;
+}
+    
+fieldset p{
+    
+    font: bold 18px arial;
+    margin-left:5px;
+    margin-bottom:5px;
+    margin-top:0px;
+    color: white;
+    text-align:center;
+    
+}
+    
+fieldset {
+    
+   background: #4ac979;
+   margin-left:15px;
+   margin-right:15px;
+   margin-bottom:15px;
+   border: 4px solid #729ac1;
+   width: 300px;
+   text-align:center;
+       
+}
+    
+legend{
+    font: bold 20px arial;
+	padding-bottom:20px; 
+    color: gray;
+}
+
+.LogInTitle{
+    font: bold 20px arial;
+    color: gray;
+}
+    
+#registry input[type="text"]{
+   width:80%
+   
+}
+
+#registry input[type="password"]{
+   width:80%
+
+}
+    
+#registry select{
+ 	margin-left:15px;
+}
+
+#registry input[type="radio"]{
+    margin-right:10px;
+}
+
+#LogIn input[type="checkbox"]{
+    margin-left:20px;
+}
+   
+.spanFormat1{
+    font: bold 18px arial;
+    color: white;
+    margin-right: 18px;
+    margin-bottom:10px;
+}
+    
+#registry input[type=submit]:hover{
+    background: #4f7484;
+}
+
+    
+#LogIn input[type=submit]:hover{
+    background: #4f7484;
+}
+    
+
+/* NOTA SOBRE LO QUE HICE PARA CENTRAR LOS DOS FIELDSETS */
+/* Problema 1: */
+/*    Una form por default abarca todo el ancho de la pantalla. Debido a esto, aunque centres el form,
+      parecera que no ocurrio nada, pues algo que abarca toda la pantalla tecnicamente ya esta centrado,
+      al igual que tecnicamente ya esta justificado a la izquierda, o justificado a la derecha. Por lo 
+      tanto, al centrar el form, como este no se movera, su contenido tampoco. Debido a esto, aunque
+      centres el form, los FIELDSETS QUE PUSE ADENTRO seguiran en su misma posicion*/
+/*  Solucion 1: */
+/*    La solucion es claramente hacer que el form no abarque toda la pantalla. Para ello, utilice la
+      propiedad "display : inline-block", cuya función es colocar en un bloque tan grande como sea
+      NECESARIO el contenido del elemento (es decir, el menor tamaño posible para encerrar a su 
+      contenido en el bloque); en este caso, los elementos del form son dos fieldsets, por lo cual 
+      ahora el form sera un bloque tan ancho y largo como sea necesario para encerrar a ambos fieldsets.
+      Esto hace que el tamaño del form ya no abarque toda la pantalla; debido a esto, ahora la propiedad
+      "text-align : center" del "<body>" tendra efecto sobre el form y ahora si se notarán los cambios.
+      Ahora si se notara que el form fue centrado, y como el form fue centrado, tambien su contenido,
+      lo que significa que los dos fieldsets que estaban dentro del form tambien fueron centrados*/
+/* Problema 2: */
+/*    Sin embargo, aunque ahora los dos fielsets estan centrados, estos no aparecen pegados uno al otro,
+      sino lo contrario; uno aparece abajo del otro, aunque el ancho de la pantalla claramente es 
+      suficiente como para que quepan los dos fieldsets en la misma linea. Este problema se debe a que
+      por default, cada fieldset dentro de una form abarca su propia linea*/
+/* Solucion 2: */
+/*    Este problema se puede solucionar si se le indica manualmente a ambos fieldsets que no quiero
+      que por default ocupen su propia linea dentro del form al que pertenecen, sino que ocupen solo
+      el espacio que necesitan del ESPACIO DISPONIBLE QUE NO SE ESTA UTILIZANDO POR LA IZQUIERDA O POR
+      LA DERECHA. Para hacer lo anterior, se emplea la propiedad "float: left" o "float: right", las 
+      cuales utilice en los fieldsets para informales que, del form al que pertenecen (el cual ahora
+      es un bloque), uno utilice por la izquierda el espacio que no está siendo utilizado dentro del
+      form, y otro utilice por la derecha el espacio que no está siendo utilizado dentro del form. Como
+      se menciono antes, ahora el form sera tan grande como sea necesario para contener a sus elementos
+      dentro, y como ahora los fieldsets tienen como instruccion no desperdiciar espacio (uno por la 
+      izquierda, y otro por la derecha), el form se hara tan ancho como sea necesario (y como la 
+      pantalla lo permita) para colocar en una sola linea a su contenido (los dos fieldsets) de la si
+      guiente manera: 1) El form se estira por la izquierda, tomando de la pantalla el espacio no uti
+      lizado necesario para colocar por la izquierda al fieldset correspondiente 2) El form se estira 
+      por la derecha, tomando de la pantalla el espacio no utilizado necesario para colocar por la 
+      derecha al fieldset correspondiente. Esto hará que el bloque que ahora es el form sea mas ancho, 
+      y menos largo. Asi mismo, aunque el form es ahora mas ancho, no es lo suficientemente ancho
+      como para abarcar toda la pantalla, por lo cual aun es posible centrarlo (y por ende, a su con
+      tenido tambien). */
+/* Resultado final:*/
+/*    Un form que es tan ancho y largo como lo necesite para contener a sus elementos, y que debido a 
+      que su ancho no abarca toda la pantalla es posible centrar al form y a los elementos que con
+      tiene. Ademas, de ser posible, el form pondra tanto de su contenido como pueda en la misma linea,
+      pues su contenido tiene la instruccion de no desperdiciar espacio disponible de la pantalla, ya 
+      sea aprovechando dicho espacio por la izquierda, o por la derecha.*/
+   
+	
+
+
+
+
+/*1.- Wrapea tu contenido en un solo bloque, tan juntito tu contenido como sea posible. Es decir
+      el ancho y largo de ese bloque sera el minimo necesario para meter todo tu contenido en ese bloque
+
+  2.- Coloca tu contenido en una sola linea conforme al tamaño de la pantalla te lo permita
+      si el tamaño de la pantalla no te lo permite ya que tu contenido es mas ancho, entonces 
+      de plano lo que no quepa ponlo en otra linea*/
+
+form{
+       display:inline-block;
+       
+}
+    
+
+/*Recupera el espacio perdido de la derecha*/
+
+.right{
+    
+    float:right;
+}
+
+/*Recupera el espacio perdido de la izquierda*/
+    
+.left{
+    float:left;
+}
+
+
+    
+#LogIn{
+    width: 450px;
+    text-align:left;
+   	border: 4px solid #729ac1;
+    background:#4ac979;
+    
+       
+}
+
+#LogIn p{
+    text-align:left;
+}
+    
+
+.spanFormat2{
+    font: bold 15px arial;
+    color:white;
+}
+    
+.menuBtn{
+    border: none; /* Remove borders */
+    color: white; /* Add a text color */
+    padding: 14px 28px; /* Add some padding */
+    cursor: pointer; /* Add a pointer cursor on mouse-over */
+    font: bold 18px arial;
+    background:  #e3e6e8;
+}
+    
+.menuBtn:hover{
+    background-color:black;
+    
+}
+
+.error{
+    
+    display:none;
+    font: bold 30px arial;
+    color: red;
+    float:right;
+ 
+}
+
+.error2{
+    
+    display:none;
+    font: bold 15px arial;
+    color: red;
+    float:right;
+    margin-top:15px;
+    margin-bottom:15px;
+    text-align:center;
+ 
+}

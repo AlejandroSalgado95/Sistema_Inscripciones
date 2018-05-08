@@ -1,0 +1,4 @@
+SELECT materia.Nombre, curso.Grupo, curso.Horario, salon.Numero, maestro.Nombre, maestro.Apellido, maestro.Correo
+FROM curso,cursomaestro,materia,maestro,salon
+WHERE curso.Id = cursomaestro.IdCurso AND cursomaestro.NominaMaestro = maestro.Nomina AND curso.NumeroSalon = salon.Numero AND 
+      curso.ClaveMateria = materia.Clave;

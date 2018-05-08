@@ -1,0 +1,51 @@
+CREATE TABLE Maestro (
+    Nomina varchar(255) NOT NULL UNIQUE,
+    Nombre varchar(255) NOT NULL,
+    Apellido varchar(255) NOT NULL,
+    Telefono varchar(255),
+    Correo varchar(255) NOT NULL,
+    CONSTRAINT PK_Nomina PRIMARY KEY (Nomina)
+);
+
+CREATE TABLE Salon (
+    Numero varchar(255) NOT NULL UNIQUE,
+    Capacidad int NOT NULL,
+    DeptoAdministrador varchar(255) NOT NULL,
+    CONSTRAINT PK_Numero PRIMARY KEY (Numero)
+);
+
+CREATE TABLE Materia (
+    Clave varchar(255) NOT NULL UNIQUE,
+    Nombre varchar(255) NOT NULL,
+    HorasLaboratorio varchar(255) NOT NULL,
+    CONSTRAINT PK_Clave PRIMARY KEY (Clave)
+);
+
+CREATE TABLE Curso (
+    Id int NOT NULL UNIQUE AUTO_INCREMENT,
+    Grupo varchar(255) NOT NULL,
+    Horario varchar(255) NOT NULL,
+    Idioma varchar(255) NOT NULL,
+    TipoGrupo varchar(255) NOT NULL,
+    NumeroSalon varchar(255) NOT NULL,
+    ClaveMateria varchar(255) NOT NULL,
+    CONSTRAINT PK_Id PRIMARY KEY (Id),
+    CONSTRAINT FK_Salon FOREIGN KEY (NumeroSalon) 		REFERENCES Salon (Numero),
+    CONSTRAINT FK_Materia FOREIGN KEY (ClaveMateria) 	 REFERENCES Materia (Clave)
+);
+
+CREATE TABLE CursoMaestro(
+    IdCurso int NOT NULL,
+    NominaMaestro varchar(255) NOT NULL,
+    Porcentaje varchar(255) NOT NULL,
+    CONSTRAINT FK_Curso FOREIGN KEY (IdCurso) 		     REFERENCES Curso (Id),
+    CONSTRAINT FK_Maestro FOREIGN KEY (NominaMaestro) 	  REFERENCES Maestro (Nomina),
+    CONSTRAINT PK_Llave PRIMARY KEY (IdCurso,      
+     NominaMaestro)
+);
+
+CREATE TABLE Administrador (
+    Correo varchar(255) NOT NULL UNIQUE,
+    Contrasena varchar(255) NOT NULL,
+    CONSTRAINT PK_Correo PRIMARY KEY (Correo)
+ );

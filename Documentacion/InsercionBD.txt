@@ -1,0 +1,75 @@
+INSERT INTO materia
+VALUES ("TC1018", "Estructura de datos", "0h");
+
+INSERT INTO materia
+VALUES ("TC1019","Fundamentos de Ingeniería de Software","0h");
+
+INSERT INTO materia
+VALUES ("TC1020","Bases de datos","0h");
+
+INSERT INTO materia
+VALUES ("TC2025","Programación Avanzada","0h");
+
+INSERT INTO materia
+VALUES ("TC2026","Desarrollo de aplicaciones Web","1h y media");
+
+INSERT INTO salon
+VALUES ("A3-101",25,"CS");
+
+INSERT INTO salon
+VALUES ("A3-302",25,"CS");
+
+INSERT INTO salon
+VALUES ("A3-401",36,"CS");
+
+INSERT INTO salon
+VALUES ("A4-101",25,"CS");
+
+INSERT INTO maestro
+VALUES ("L00123456","Raul","Perez","+52819283761","raul.perez@itesm.mx");
+
+INSERT INTO maestro
+VALUES ("L00823017","Lorena","Martínez","+52818194536","lorena.martinez@itesm.mx");
+
+INSERT INTO maestro
+VALUES ("L00275819","Carlos","Lavariega","+52810144533","carlos.lavariega@itesm.mx");
+
+INSERT INTO maestro
+VALUES ("L00741032","Kevin","Long","+52819931471","kevin.long@itesm.mx");
+
+INSERT INTO maestro (Nomina,Nombre,Apellido,Correo)
+VALUES ("L00132012","Román","Martínez","roman.martinez@itesm.mx");
+
+INSERT INTO curso (Grupo,Horario,Idioma,TipoGrupo,NumeroSalon,ClaveMateria)
+VALUES ("1","7/3 MaVi","Español","Regular","A3-302","TC1018");
+
+INSERT INTO curso (Grupo,Horario,Idioma,TipoGrupo,NumeroSalon,ClaveMateria)
+VALUES ("2","8+/3 MaVi","Español","Honors","A3-302","TC1018");
+
+INSERT INTO curso (Grupo,Horario,Idioma,TipoGrupo,NumeroSalon,ClaveMateria)
+VALUES ("1","11+/3 LuJu","Español","Regular","A4-101","TC2026");
+
+INSERT INTO curso (Grupo,Horario,Idioma,TipoGrupo,NumeroSalon,ClaveMateria)
+VALUES ("1","6/6 Mi","Español","Regular","A3-302","TC1020");
+
+INSERT INTO cursomaestro 
+VALUES (1,"L00823017","100%");
+
+INSERT INTO cursomaestro 
+VALUES (2,"L00823017","100%");
+
+INSERT INTO cursomaestro 
+VALUES (3,"L00123456","100%");
+
+INSERT INTO cursomaestro 
+VALUES (4,"L00275819","50%");
+
+INSERT INTO cursomaestro 
+VALUES (4,"L00741032","50%");
+
+
+INSERT INTO Administrador
+VALUES ("administrador.ejemplo@gmail.com","random");
+
+INSERT INTO administrador
+VALUES ("aleatorio@gmail.com","alazar");
