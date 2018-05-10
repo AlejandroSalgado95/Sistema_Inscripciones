@@ -1,5 +1,4 @@
-Profesores SIN clase en el horario: 7/3 MaVi
+Profesores CON clase en el horario: 6/6 Mi
 
-L00123456, Raul Perez, +52819283761, raul.perez@itesm.mx
 L00275819, Carlos Lavariega, +52810144533, carlos.lavariega@itesm.mx
 L00741032, Kevin Long, +52819931471, kevin.long@itesm.mx

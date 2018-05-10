@@ -17,15 +17,15 @@ $correo = $_POST["correo"];
 $contrasena = $_POST["contrasena"];
 
 if (isset($_POST["correo"]))
-	$correo = $_POST["correo"];
+  $correo = $_POST["correo"];
 else 
-	$correo = "no hay correo";
+  $correo = "no hay correo";
 
 
 if (isset($_POST["contrasena"]))
-	$contrasena = $_POST["contrasena"];
+  $contrasena = $_POST["contrasena"];
 else 
-	$contrasena = "no hay contrasena";*/
+  $contrasena = "no hay contrasena";*/
 
 
 $text = "";
@@ -39,7 +39,7 @@ for($i= 0; $i < count($reportInfo); $i++) {
     
     for ($j = 0; $j < count ($reportInfo[$i]); $j++){
 
-    	$text = $text + $reportInfo[$i][$j] + " ";
+      $text = $text + $reportInfo[$i][$j] + " ";
 
 
 
@@ -69,7 +69,7 @@ if ($action == 'Profesores'){
              $text = $text . (string)$reportInfo[$i]["clavemateria"] . ", ";
           */ 
           if ((string)$reportInfo[$i]["nomina"] != null)
-     	       $text = $text . (string)$reportInfo[$i]["nomina"] . ", "; 
+             $text = $text . (string)$reportInfo[$i]["nomina"] . ", "; 
           if ((string)$reportInfo[$i]["nombre"] != null)
              $text = $text . (string)$reportInfo[$i]["nombre"] . " "; 
           if ((string)$reportInfo[$i]["apellido"] != null)
@@ -97,68 +97,37 @@ if ($action == 'Profesores'){
 
 } else if($action == 'Salones'){
 
-	$filename = "reporteSalones.txt";
+  $filename = "reporteSalones.txt";
+  $text = $text . "Salones disponibles en el horario " . $opcion . ": " . "\r\n";
 
-	for($i= 0; $i < count($allClassrooms); $i++) { 
-          
-       $text = $text + (string) $reportInfo[$i]["numero"] + ", ";
-       $text = $text + (string) $reportInfo[$i]["capacidad"] + ", ";
-       $text = $text + (string) $reportInfo[$i]["deptoadmin"] + "\n" ; 
+  for($i= 0; $i < count($reportInfo); $i++) { 
+
+
+      if ((string)$reportInfo[$i]["numero"] != null)
+        $text = $text . (string) $reportInfo[$i]["numero"] . ", ";
+      if ((string)$reportInfo[$i]["capacidad"] != null)
+       $text = $text . (string) $reportInfo[$i]["capacidad"] .", ";
+     if ((string)$reportInfo[$i]["deptoadmin"] != null)
+       $text = $text . (string) $reportInfo[$i]["deptoadmin"] . "\r\n" ; 
             
    }
 
 } else if($action == 'Cursos'){
 
-	$filename = "reporteCursos.txt";
+  $filename = "reporteCursos.txt";
 
-  if ($tipoReporte == "enlugarfecha")
-        $text = $text . "Cursos que se llevan acabo el dia " . (string)$dia . " en el salon ".  (string)$salon . ":" . "\r\n" ; 
-
-  else if ($tipoReporte == "enmateria")
-        $text = $text . "Cursos existentes de la materia " . (string)$reportInfo[0]["nombremateria"]. ": " .  "\r\n" ; 
-
-  $text = $text . "\r\n" ;
-
-	for($i= 0; $i < count($reportInfo); $i++) { 
-      
-       $text = $text . (string)$clavemateria . ", "; 
-       $text = $text . "grupo " . (string)$reportInfo[$i]["grupo"] . ", "; 
-       $text = $text . (string)$reportInfo[$i]["nomina"] . " ". (string)$reportInfo[$i]["nombre"] . " " . (string)$reportInfo[$i]["apellido"] . ", "; 
-       $text = $text . (string)$reportInfo[$i]["horario"] . ", ";
-       $text = $text . (string)$reportInfo[$i]["numerosalon"] . ", ";  
-       $text = $text . (string)$reportInfo[$i]["idioma"] . ", ";
-       $text = $text . (string)$reportInfo[$i]["tipogrupo"] . "\r\n"; 
+  for($i= 0; $i < count($allCourses); $i++) { 
+       
+       $text = $text + (string)$reportInfo[$i]["materia"] + ", ";
+       $text = $text + (string)$reportInfo[$i]["grupo"] + ", "; 
+       $text = $text + (string)$reportInfo[$i]["horario"] + ", "; 
+       $text = $text + (string)$reportInfo[$i]["horaslaboratorio"] + ", ";
+       $text = $text + (string)$reportInfo[$i]["salon"] + ", "; 
+       $text = $text + (string)$reportInfo[$i]["nombre"] + ", "; 
+       $text = $text + (string)$reportInfo[$i]["correo"] + "\n" ; 
            
     }  
 
-}
-else if ($action == 'Asignaciones'){
-	
-	
-    $filename = "reporteAsignaciones.txt";
-	
-	$text = "Cursos para el profesor con nomina: " . (string)$profe  . "\r\n";
-
-    $text = $text . "\r\n" ;
-
-    for($i= 0; $i < count($reportInfo); $i++) { 
-
-          /*
-          if ((string)$reportInfo[$i]["clavemateria"] != null)
-             $text = $text . (string)$reportInfo[$i]["clavemateria"] . ", ";
-          */ 
-          if ((string)$reportInfo[$i]["ClaveMateria"] != null)
-     	       $text = $text . (string)$reportInfo[$i]["ClaveMateria"] . ", "; 
-          if ((string)$reportInfo[$i]["grupo"] != null)
-             $text = $text . (string)$reportInfo[$i]["grupo"] . " "; 
-          if ((string)$reportInfo[$i]["salon"] != null)
-             $text = $text . (string)$reportInfo[$i]["salon"] . ", "; 
-          if ((string)$reportInfo[$i]["idioma"] != null)
-             $text = $text . (string)$reportInfo[$i]["idioma"] . ", "; 
-          if ((string)$reportInfo[$i]["honors"] != null)
-             $text = $text . (string)$reportInfo[$i]["honors"] . "\r\n" ; 
-
-    }
 }
 
 $myfile = fopen($filename, "w") or die("Unable to open file!");
@@ -170,7 +139,7 @@ fwrite($myfile, $text);
 fclose($myfile);
 
 if( !file_exists($filename) ) 
-	die("File not found");
+  die("File not found");
 
 header("Content-disposition: attachment; filename= \"$filename\" ");
 header("Content-type: text/plain");

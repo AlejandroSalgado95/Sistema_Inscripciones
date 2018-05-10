@@ -12,17 +12,44 @@
 
 		header('content-type: text/html');
 
+		$allHours = $classroom->getHours();
+		//$hora=$allHours[0]["hora"] ;
 		$allClassrooms = $classroom -> getClassrooms();
+
+		//$allHours = $classroom->getHours();
 
 		mysqli_close($con);
 
 		require_once("../views/classroomView.php");
 
+	} else if ($type == "Filtrar"){
+		//header('content-type: text/html');
+		//header("Refresh:0");
+		
+		$hours=$_POST["HoraSalon"];
+
+		if($hours=="Todos")
+			$allClassrooms = $classroom -> getClassrooms();
+		else
+			$allClassrooms = $classroom -> getClassroomsHours($hours);
+
+		$allHours = $classroom->getHours();
+
+		mysqli_close($con);
+
+		require_once("../views/classroomView.php");
+		
+	
+
+
 	} else if ($type == "Reporte"){
 
-		//$reportInfo = $classroom -> getClassroomsNoAssoc();
+		$opcion=$_POST["HoraReporte"];
 
-		$reportInfo = $classroom -> getClassrooms();
+		if($opcion=="Todos")
+			$reportInfo = $classroom -> getClassrooms();
+		else
+			$reportInfo = $classroom -> getClassroomsHours($opcion);
 
 		require_once("downloadService.php");
 

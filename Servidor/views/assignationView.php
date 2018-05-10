@@ -9,8 +9,9 @@
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
-        <script src="../views/js/classroom.js"></script> 
-
+        <script src="../views/js/assignation.js"></script>
+        
+        
         <!--
         <script>
             <?php //include 'js/menu.js'; ?>
@@ -18,7 +19,7 @@
         -->
 
         <meta charset="UTF-8" />
-        <title>Salones</title>
+        <title>Asignaciones</title>
 
     </head>
     <body>
@@ -76,90 +77,102 @@
             -->
          </div>
 
-        <form action ="index.php" method = "post">
-
-            <select name = "HoraSalon" >
-                <?php for($i= 0; $i < count($allHours); $i++) { ?> 
-                             
-                    <option value=   "<?php echo $allHours[$i]["hora"] ; ?>"><?php echo $allHours[$i]["hora"] ; ?></option>
-                
-                <?php } ?> 
-                <option value="Todos">Todos</option>
-            </select>
-
-
-            <input type ="submit" name = "type" class = "option" value = "Filtrar" >
-            <input type = "text" name = "action" value = "Salones" hidden>
-            <br>
-            <br>
-
-        </form>
-
-
-
-        <button id = "settings" class = "option gear">
+        <br>
+        
+        <button id = "settings" class = "option gear"> 
             <img src="../views/img/gear.png" height="30 " width="30">
         </button>
 
-        <button id = "add" class = "option add">
+        <button id = "add" class = "option add"> 
             <img src="../views/img/plus.png" height="30 " width="30">
         </button>
 
-        <button id = "delete" class = "option delete">
+        <button id = "delete" class = "option delete"> 
             <img src="../views/img/delete10.png" height="30 " width="30">
         </button>
-
-        <br>
+        
         <div id = "tableDiv">
-            <table id = "classroomTable" align = "center">
-                 <tr>
-                     <th>Numero</th>
-                     <th>Capacidad</th>
-                     <th>Depto. Administrador</th>
-                 </tr>
-                <?php for($i= 0; $i < count($allClassrooms); $i++) { ?> 
-                <tr>
-                    <td><?php echo $allClassrooms[$i]["numero"] ; ?></td>
-                    <td><?php echo $allClassrooms[$i]["capacidad"] ; ?></td>
-                    <td><?php echo $allClassrooms[$i]["deptoadmin"] ; ?></td>
-                </tr> 
-                <?php } ?> 
-            </table>
+        <table id = "assignationsTable" align = "center">
+             <tr>
+				 <th>Clave</th>
+                 <th>Materia</th>
+                 <th>Grupo</th>
+                 <th>Horario</th>
+                 <th>Profesor</th>
+                 <th>Correo</th>
+                 <th>Porcentaje</th>
+             </tr>
+            <?php for($i= 0; $i < count($allAssignations); $i++) { ?> 
+            <tr>
+				<td><?php echo $allAssignations[$i]["clave"] ; ?></td>
+                <td><?php echo $allAssignations[$i]["materia"] ; ?></td>
+                <td><?php echo $allAssignations[$i]["grupo"] ; ?></td>
+                <td><?php echo $allAssignations[$i]["horario"] ; ?></td>
+                <td><?php echo $allAssignations[$i]["nombre"] ; ?></td>
+                <td><?php echo $allAssignations[$i]["correo"] ; ?></td>
+                <td><?php echo $allAssignations[$i]["porcentaje"] ; ?></td>
+            </tr> 
+            <?php } ?> 
+        </table>
         </div>
-
-        <br>
+        
+		
+		<br>
         <button id = "save" class = "option save" hidden> 
             Guardar
         </button>
-
-
+		
         <br>
         <br>
-
-        <div id = "newRowDiv" >
+        
+          <div id = "newRowDiv" >
             <fieldset id = "newRowFieldset" hidden>
-                <legend>Nuevo salon</legend>
+                <legend>Nuevo profesor</legend>
                     
                     
-                <p>Numero</p>
+                <p>Materia</p>
 
+                <select id = "dropDownMateria" name = "materia">
+                    <?php for($i= 0; $i < count($assignationNames); $i++) { ?> 
+                                 
+                        <option value=   "<?php echo $assignationNames[$i]["materia"] ; ?>"   ><?php echo $assignationNames[$i]["materia"] ; ?></option>
+                    
+                    <?php } ?> 
+                </select>
 
-                <input id = "id" type="text" > <span class ="error" name="err">*</span>
+                <!-- <input id = "id" type="text" > <span class ="error" name="err">*</span> -->
 
                 <br><br>
 
-                <p>Capacidad</p>
-                <input id = "name" type="text">  <span class ="error" name="err">*</span>
-
-                <br><br>
-
-                <p>Depto. Administrador</p>
-                <input id = "lastname" type="text">  <span class ="error" name="err">*</span>
+                <p>Grupo</p>
                 
+                <select id = "dropDownGrupo" name = "grupo">
+                    <?php for($i= 1; $i < 10; $i++) { ?> 
+                                 
+                        <option value=   "<?php echo $i;?>  "   ><?php echo $i;?></option>
+                    
+                    <?php } ?> 
+                </select>
+                
+                <!-- <input id = "name" type="text">  <span class ="error" name="err">*</span> -->
 
                 <br><br>
 
+                <p>Profesor</p>
+                
+                <select name = "professor">
+                    <?php for($i= 0; $i < count($nominas); $i++) { ?> 
+                                 
+                        <option value=   "<?php echo $nominas[$i]["nomina"] ; ?>"   ><?php echo $nominas[$i]["nomina"] ; ?></option>
+                    
+                    <?php } ?> 
+                </select>
+                
+                
+                 <!-- <input id = "lastname" type="text">  <span class ="error" name="err">*</span> -->
+                <br><br>
                 <button id = "saveNewRecord" class = 'option' >Guardar</button>
+
 
              </fieldset>
              <br>
@@ -168,25 +181,31 @@
 
         </div>
 
+        <br>
+
+        <br>
+        <br>
 
         <!-- ../../Servidor/controllers/index.php -->
-        <form action ="index.php" method = "post">
+       <form action ="index.php" method = "post">
 
-            <select name = "HoraReporte" >
-                <?php for($i= 0; $i < count($allHours); $i++) { ?> 
-                             
-                    <option value=   "<?php echo $allHours[$i]["hora"] ; ?>"><?php echo $allHours[$i]["hora"] ; ?></option>
-                
-                <?php } ?> 
-                    <option value="Todos">Todos</option>
+            <select name = "professor">
+                    <?php for($i= 0; $i < count($nominas); $i++) { ?> 
+                                 
+                        <option value=   "<?php echo $nominas[$i]["nomina"] ; ?>"   ><?php echo $nominas[$i]["nomina"] ; ?></option>
                     
+                    <?php } ?> 
             </select>
 
             <input type ="submit" name = "type" class = "option" value = "Reporte" >
-            <input type = "text" name = "action" value = "Salones" hidden>
+            <input type = "text" name = "action" value = "Asignaciones" hidden>
+            <br>
+            <br>
+
         </form>
 
-
+        <br>
+        
 
     </body>
 </html>

@@ -21,21 +21,7 @@ class ProfessorModel{
         return $this->professors;
     }
 
-	public function getProfessorsEmails(){
-        $consult=$this->db->query("SELECT * FROM Maestro");
-        while($row=$consult->fetch_assoc()) {
-			array_push($this->professors,$row[Correo]);
-        }
-        return $this->professors;
-    }
-    // public function getProfessorEmails() {
-		// $consult=$this->db->query("SELECT maestro.Correo FROM maestro");
-		// while($row=$consult->fetch_assoc() {
-			// $this->professors.push($row[Correo]);
-		// }
-		// return $this->professors;
-	// }
-	
+    
     public function getProfessorsWithSchedule($schedule){
 
 

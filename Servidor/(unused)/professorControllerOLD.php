@@ -79,11 +79,6 @@
 
 			echo ($modifiedRows);
 
-		} else if ($modificationType == "ConsultaCorreo") {
-			
-			$correos = array();
-			$correos = $professor -> getProfessorsEmails();
-			echo (json_encode($correos));
 		}
 	}
 

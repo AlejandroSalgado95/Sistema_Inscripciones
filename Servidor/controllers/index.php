@@ -19,7 +19,7 @@
 		} else{	
 
 			header("HTTP/1.1 406 User not found.");
-			die("Las credenciales provistas son incorrectas");
+			die("Las credenciales provistas son incorrectas.");
 			
 			//header('content-type: text/html');
 			//require_once("../views/loginView.php");
@@ -35,6 +35,11 @@
 	else if ($action == 'Salones'){
 
 		require_once("classroomController.php");
+
+	}
+	else if ($action == 'Asignaciones'){
+
+		require_once("assignationController.php");
 
 	}
 	else if ($action == 'Cursos'){
